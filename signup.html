@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup page</title>
+    <!-- Add a link to your Ionic icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link rel="stylesheet" href="loginsignup.css" />
+  </head>
+  <body>
+    <header>
+      <img src="logo5.png" alt="Your Logo" class="logo">
+      
+      <nav class="navbar">
+        <ul></ul>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">Register</a></li>
+          <li><a href="index2.html">News</a></li>
+          
+        </ul>
+      </nav>
+    </header>
+    <div class="box">
+      <div class="form-box login">
+        <h2>SIGN UP</h2>
+        <p>Create your account</p>
+
+        <form action="Signin.html" id="signupForm">
+          <div class="input-box">
+            
+            <input type="text" id="UsernameInput" required />
+            <label>Full Name</label>
+          </div>
+
+          <div class="input-box">
+            
+            <input type="mobileNumber" id="mobileInput" required />
+            <label>Mobile NO</label>
+          </div>
+
+          <div class="input-box">
+            
+            <input type="text" id="emailInput" required />
+            <label>Email</label>
+          </div>
+
+          <div class="input-box">
+            
+            <input type="password" id="PasswordInput" required />
+            <label>Password</label>
+          </div>
+
+          <button type="submit" class="btn">
+            <span></span>Sign up
+          </button>
+            <div class="login-register">
+              <p>
+              Already have an Accountㅤ<a href="login.html" class="Sign in">
+                  Sign in</a
+                >
+              </p>
+            </div>
+        </form>
+      </div>
+    </div>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      import {
+        getDatabase,
+        set,
+        ref,
+      } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCLxvMq7KIEQWZx_LNLf2dhi49UZ_E1few",
+        authDomain: "weather-79369.firebaseapp.com",
+        databaseURL: "https://weather-79369-default-rtdb.firebaseio.com",
+        projectId: "weather-79369",
+        storageBucket: "weather-79369.appspot.com",
+        messagingSenderId: "655385162958",
+        appId: "1:655385162958:web:bbdf0cc051b366b6dc8c9f",
+        measurementId: "G-M4KL2M1709"
+    };
+
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const auth = getAuth(app);
+      const signUpForm = document.querySelector("#signupForm");
+  
+      signUpForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+  
+        const email = document.getElementById("emailInput").value;
+        const password = document.getElementById("PasswordInput").value;
+        const username = document.getElementById("UsernameInput").value;
+        const mobile = document.getElementById("mobileInput").value;
+  
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+  
+            set(ref(database, "user/" + user.uid), {
+              username: username,
+              email: email,
+              mobile: mobile,
+            }).then(() => {
+              window.location.href = "login.html";
+            }).catch((error) => {
+              console.error("Error storing user data:", error);
+            });
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            alert(errorMessage);
+          });
+      });
+    </script>
+<script src="script.js"></script>
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>
+  </body>
+</html>

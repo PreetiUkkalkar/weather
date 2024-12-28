@@ -1,0 +1,122 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('image3.jpg'); 
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+}
+.logo {
+  position: absolute;
+  top: 10px; /* Adjust the distance from the top as needed */
+  left: 10px; /* Adjust the distance from the left as needed */
+  width: 120px;
+}
+
+header {
+  
+  color: #fff;
+  padding: 10px 0;
+}
+
+ul{
+  float: right;
+  list-style-type: none;
+  margin-top:25px;
+}
+ul li{
+  display: inline-block;
+}
+ul li a{
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  font-size: 24px;
+  margin:5px 10px;
+  color:#fff;
+  padding: 0px 20px;
+  border:1px solid transparent;
+  transition: 0.4s ease ;
+}
+ul li a:hover{
+  background-color: #fff;
+  color: #111fe4;
+}
+ul li.active a{
+  background-color: #fff;
+  color: #111fe4;
+}
+.main{
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+
+.box {
+  margin: 100px auto;
+  width: 300px;
+  background-color: rgba(186, 184, 184, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+
+.input-box {
+  margin-bottom: 20px;
+}
+
+
+
+.input-box input {
+  width: calc(100% - 40px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  
+}
+
+.input-box input:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.btn {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #555;
+}
+
+.login-register p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.login-register p a {
+  color: #333;
+  text-decoration: none;
+}
+
+.login-register p a:hover {
+  text-decoration: underline;
+}

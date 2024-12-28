@@ -1,0 +1,144 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: century Gothic;
+}
+.logo {
+  position: absolute;
+  top: 10px; /* Adjust the distance from the top as needed */
+  left: 10px; /* Adjust the distance from the left as needed */
+  width: 120px;
+}
+
+header {
+  background-image:linear-gradient(rgba(1, 1, 1, 0.5),rgba(7, 7, 7, 0.5)), url(image3.jpg);
+  background-size: cover;
+  height:100vh;
+  background-position: center;
+}
+ul{
+  float: right;
+  list-style-type: none;
+  margin-top:25px;
+}
+ul li{
+  display: inline-block;
+}
+ul li a{
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  font-size: 24px;
+  margin:5px 10px;
+  color:#fff;
+  padding: 0px 20px;
+  border:1px solid transparent;
+  transition: 0.4s ease ;
+}
+ul li a:hover{
+  background-color: #fff;
+  color: #111fe4;
+}
+ul li.active a{
+  background-color: #fff;
+  color: #111fe4;
+}
+.main{
+  max-width: 1200px;
+  margin: auto;
+}
+.header__container {
+  padding: 24rem 1rem 10rem;
+}
+.header__container h1{
+  
+  max-width: 1000px;
+  margin-inline: auto;
+  font-size: 3.5rem;
+  color: var(#fff);
+  text-align:center;
+  color:#fff;
+  position: absolute;
+  bottom: 400px;
+  left: 500px;
+
+}
+.title1{
+  top: 500px;
+}
+.header__form{
+  padding:1rem 2rem;
+  background-color:rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+.header__form form{
+  padding: 0.7rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.iuput__group{
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.input__group lable{
+  font-size:2rem;
+  font-weight:600;
+  color:var(--text-dark);
+}
+.input__group input{
+  max-width:140px;
+  outline:auto;
+  border:1px;
+  font-size:0.9rem;
+}
+.btn {
+  width: 10%;
+  padding: 5px 10px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+.btn:hover {
+  background-color:rgb(252, 62, 62);
+}
+
+
+.container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.buttons .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+.buttons .btn:hover {
+  background-color: #0056b3;
+}

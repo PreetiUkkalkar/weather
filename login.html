@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signin page</title>
+    
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link rel="stylesheet" href="loginsignup.css" />
+  </head>
+  
+  <body>
+    <header>
+      <img src="logo5.png" alt="Your Logo" class="logo">
+      <nav class="navbar">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="signup.html">Register</a></li>
+          <li><a href="index2.html">NEWS</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="box">
+      <div class="form-box login">
+        <h2>LOG IN</h2>
+        <p>Input your Credential</p>
+
+        <form action="#" id="loginform">
+          <div class="input-box">
+            <input type="text" id="emailInput" required />
+            <label>Email</label>
+          </div>
+          
+          <div class="input-box">
+             
+            <input type="password" id="PasswordInput" required />
+            <label>Password</label>
+          </div>
+
+          
+
+
+          <button type="button" class="btn" id="login">
+            <span></span>Log in
+          </button>
+
+
+          <div class="login-register">
+            <p>
+              Don't have an Accountㅤ<a href="signup.html" class="register-link">Register</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      import {
+        getDatabase,
+        set,
+        ref,
+        update,
+      } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    
+      const firebaseConfig = {
+        apiKey: "AIzaSyCLxvMq7KIEQWZx_LNLf2dhi49UZ_E1few",
+        authDomain: "weather-79369.firebaseapp.com",
+        databaseURL: "https://weather-79369-default-rtdb.firebaseio.com",
+        projectId: "weather-79369",
+        storageBucket: "weather-79369.appspot.com",
+        messagingSenderId: "655385162958",
+        appId: "1:655385162958:web:bbdf0cc051b366b6dc8c9f",
+        measurementId: "G-M4KL2M1709"
+    };
+    
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase();
+      const auth = getAuth(app);
+    
+      const loginform = document.querySelector("#loginform");
+    
+      const SignInUser = (email, password) => {
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            const dt = new Date();
+            update(ref(database, "user/" + user.uid), {
+              last_login: dt.toISOString(),
+            });
+            window.location.href = "index.html";
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            alert(errorMessage);
+          });
+      };
+    
+      document.getElementById("login").addEventListener("click", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("emailInput").value;
+        const password = document.getElementById("PasswordInput").value;
+        SignInUser(email, password);
+      });
+    </script>
+    
+
+    <script src="script.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
